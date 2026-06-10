@@ -1,0 +1,1216 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>醫美大健康會員制｜決策前路徑地圖</title>
+  <style>
+    :root {
+      --ink: #17211e;
+      --muted: #64736e;
+      --paper: #f7f4ed;
+      --white: #ffffff;
+      --line: #dbe0d8;
+      --forest: #1f5145;
+      --teal: #197c78;
+      --blue: #426b9b;
+      --gold: #b48a31;
+      --clay: #b56749;
+      --plum: #73516f;
+      --mint: #e6f0e8;
+      --sky: #e8eff6;
+      --sand: #f2e8dd;
+      --rose: #f0e6e6;
+      --shadow: 0 22px 60px rgba(29, 43, 37, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(230, 240, 232, .92) 0, rgba(247, 244, 237, .9) 430px, var(--paper) 900px),
+        var(--paper);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.66;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    p { margin: 0; }
+
+    .nav,
+    main,
+    section,
+    .card,
+    .panel,
+    .signal-board,
+    .source-note {
+      min-width: 0;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(31, 81, 69, .14);
+      background: rgba(247, 244, 237, .93);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      width: min(1240px, calc(100% - 36px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--forest);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, transparent 47%, rgba(255, 255, 255, .82) 48% 54%, transparent 55%),
+        conic-gradient(from 210deg, var(--forest), var(--teal), var(--gold), var(--clay), var(--plum), var(--forest));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .68);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .links a {
+      min-height: 34px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: #38544d;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .links a:hover {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, .78);
+    }
+
+    main {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 76px 0;
+      scroll-margin-top: 84px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      letter-spacing: 0;
+      line-height: 1.15;
+    }
+
+    h1 {
+      max-width: 900px;
+      color: var(--forest);
+      font-size: clamp(38px, 6.3vw, 74px);
+    }
+
+    h1 .line { display: inline; }
+
+    h2 {
+      color: var(--forest);
+      font-size: clamp(30px, 4.25vw, 54px);
+    }
+
+    h3 {
+      color: #20312c;
+      font-size: 20px;
+    }
+
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--clay);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .86fr);
+      gap: 46px;
+      align-items: center;
+      padding: 58px 0 46px;
+    }
+
+    .lead {
+      max-width: 800px;
+      margin-top: 24px;
+      color: #405a53;
+      font-size: 20px;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .chip {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      padding: 0 11px;
+      border: 1px solid rgba(31, 81, 69, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .7);
+      color: #38544d;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .signal-board,
+    .card,
+    .panel,
+    .question-card,
+    .resource-card,
+    .path-card {
+      border: 1px solid rgba(31, 81, 69, .14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .82);
+      box-shadow: 0 14px 36px rgba(31, 53, 45, .07);
+    }
+
+    .signal-board {
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .board-head {
+      padding: 21px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(230, 240, 232, .96), rgba(232, 239, 246, .78));
+    }
+
+    .board-head strong {
+      display: block;
+      color: var(--forest);
+      font-size: 18px;
+    }
+
+    .board-head span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .route-mini {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .route-mini div {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--line);
+      color: #415852;
+      min-width: 0;
+    }
+
+    .route-mini p,
+    .card p,
+    .panel p,
+    .source-note {
+      overflow-wrap: anywhere;
+    }
+
+    .route-mini div:last-child { border-bottom: 0; }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--forest);
+      color: white;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .route-mini b { color: var(--ink); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .74fr) minmax(280px, .46fr);
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card,
+    .panel,
+    .resource-card,
+    .path-card {
+      padding: 22px;
+    }
+
+    .card small,
+    .resource-card small,
+    .path-card small {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--clay);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .card p,
+    .resource-card p,
+    .path-card p {
+      margin-top: 12px;
+      color: #536761;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 14px 36px rgba(31, 53, 45, .07);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .comparison-table th {
+      color: var(--forest);
+      background: rgba(230, 240, 232, .86);
+      font-size: 14px;
+    }
+
+    .comparison-table tr:last-child td { border-bottom: 0; }
+
+    .comparison-table td {
+      color: #465c55;
+      font-size: 15px;
+    }
+
+    .comparison-table b { color: var(--ink); }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .resource-card:nth-child(1),
+    .resource-card:nth-child(4) { border-top: 5px solid var(--teal); }
+    .resource-card:nth-child(2),
+    .resource-card:nth-child(5) { border-top: 5px solid var(--gold); }
+    .resource-card:nth-child(3),
+    .resource-card:nth-child(6) { border-top: 5px solid var(--plum); }
+
+    .ability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .ability {
+      min-height: 150px;
+      padding: 18px;
+      border: 1px solid rgba(31, 81, 69, .14);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .ability b {
+      color: var(--forest);
+    }
+
+    .ability p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .question-card {
+      min-height: 360px;
+      padding: 24px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 16px;
+    }
+
+    .question-card:nth-child(1) { background: linear-gradient(180deg, var(--sky), rgba(255,255,255,.88)); }
+    .question-card:nth-child(2) { background: linear-gradient(180deg, var(--sand), rgba(255,255,255,.88)); }
+    .question-card:nth-child(3) { background: linear-gradient(180deg, var(--mint), rgba(255,255,255,.88)); }
+    .question-card:nth-child(4) { background: linear-gradient(180deg, var(--rose), rgba(255,255,255,.88)); }
+
+    .question {
+      color: var(--forest);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .case-tags span {
+      padding: 5px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .82);
+      color: #425b54;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 19px;
+      color: #50645e;
+    }
+
+    .bullet-list li + li { margin-top: 6px; }
+
+    .question-card .insight {
+      padding-top: 14px;
+      border-top: 1px solid rgba(31, 81, 69, .14);
+      color: #405750;
+      font-weight: 900;
+    }
+
+    .case-intro-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .entry-map {
+      display: grid;
+      grid-template-columns: minmax(280px, .44fr) minmax(0, .56fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .entry-question {
+      padding: 28px;
+      border-radius: 8px;
+      background: #20362f;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .entry-question h3 {
+      color: white;
+      font-size: 31px;
+      line-height: 1.18;
+    }
+
+    .entry-question p {
+      margin-top: 18px;
+      color: rgba(255, 255, 255, .78);
+      font-size: 16px;
+    }
+
+    .entry-routes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .entry-route {
+      padding: 22px;
+      border: 1px solid rgba(31, 81, 69, .14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
+    }
+
+    .entry-route small {
+      color: var(--clay);
+      font-weight: 900;
+    }
+
+    .entry-route h3 {
+      margin-top: 8px;
+      color: var(--forest);
+      font-size: 23px;
+    }
+
+    .entry-route p {
+      margin-top: 10px;
+      color: #536761;
+      font-size: 15px;
+    }
+
+    .entry-route .route-note {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31, 81, 69, .14);
+      color: #344f48;
+      font-weight: 900;
+    }
+
+    .closing-note {
+      margin-top: 18px;
+      padding: 26px;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(230, 240, 232, .92), rgba(232, 239, 246, .86)),
+        white;
+      border: 1px solid rgba(31, 81, 69, .14);
+      box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
+    }
+
+    .closing-note h3 {
+      color: var(--forest);
+      font-size: 27px;
+    }
+
+    .closing-note p {
+      margin-top: 12px;
+      color: #405750;
+      font-size: 17px;
+    }
+
+    .extension-link {
+      margin-top: 18px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid rgba(31, 81, 69, .16);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(232, 239, 246, .92), rgba(255, 255, 255, .9)),
+        white;
+      box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
+    }
+
+    .extension-link h3 {
+      color: var(--forest);
+      font-size: 26px;
+    }
+
+    .extension-link p {
+      margin-top: 10px;
+      color: #536761;
+      font-size: 16px;
+    }
+
+    .extension-link a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      background: var(--forest);
+      color: white;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .extension-link a:hover {
+      background: #163d34;
+    }
+
+    .case-intro {
+      min-height: 260px;
+      padding: 22px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 12px;
+      border: 1px solid rgba(31, 81, 69, .14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
+    }
+
+    .case-intro h3 {
+      color: var(--forest);
+      font-size: 22px;
+    }
+
+    .case-meta {
+      color: var(--clay);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .case-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .case-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid rgba(31, 81, 69, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .78);
+      color: var(--forest);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .case-links a:hover {
+      border-color: rgba(31, 81, 69, .34);
+      background: white;
+    }
+
+    .case-intro p {
+      color: #536761;
+      font-size: 15px;
+    }
+
+    .case-intro .case-value {
+      padding-top: 12px;
+      border-top: 1px solid rgba(31, 81, 69, .14);
+      color: #344f48;
+      font-weight: 900;
+    }
+
+    .indicator-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .indicator {
+      min-height: 116px;
+      padding: 16px;
+      border: 1px solid rgba(31, 81, 69, .14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .82);
+    }
+
+    .indicator b {
+      color: var(--forest);
+    }
+
+    .indicator p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .loop-map {
+      display: grid;
+      grid-template-columns: minmax(310px, .42fr) minmax(0, .78fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .loop-focus {
+      padding: 26px;
+      border-radius: 8px;
+      background: #20362f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+    }
+
+    .loop-focus h3 {
+      color: white;
+      font-size: 30px;
+    }
+
+    .loop-focus p {
+      margin-top: 16px;
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .needs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .need {
+      padding: 16px;
+      border: 1px solid rgba(31, 81, 69, .12);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .need b { color: var(--forest); }
+
+    .need p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .upgrade {
+      display: grid;
+      grid-template-columns: minmax(280px, .42fr) minmax(0, .78fr);
+      gap: 18px;
+    }
+
+    .upgrade .panel:first-child {
+      background: linear-gradient(180deg, rgba(230, 240, 232, .96), rgba(255,255,255,.86));
+    }
+
+    @media (max-width: 1060px) {
+      .hero,
+      .section-head,
+      .grid-3,
+      .grid-2,
+      .resource-grid,
+      .ability-grid,
+      .question-grid,
+      .entry-map,
+      .entry-routes,
+      .case-intro-grid,
+      .indicator-strip,
+      .extension-link,
+      .loop-map,
+      .upgrade {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .links {
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+      }
+
+      .links::-webkit-scrollbar { display: none; }
+
+      .links a { flex: 0 0 auto; }
+
+      section { padding: 54px 0; }
+
+      .hero {
+        min-height: auto;
+        padding-top: 42px;
+        gap: 34px;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: clamp(31px, 9vw, 36px);
+        line-height: 1.16;
+        word-break: keep-all;
+      }
+
+      h1 .line { display: block; }
+
+      .lead { font-size: 17px; }
+
+      .needs-grid { grid-template-columns: 1fr; }
+
+      .question { font-size: 21px; }
+
+      .extension-link a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="頁面導覽">
+    <div class="nav-inner">
+      <a class="brand" href="#lock" aria-label="回到頂部">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>高信任會員制地圖</span>
+      </a>
+      <div class="links">
+        <a href="#board">私董會</a>
+        <a href="#health">產業</a>
+        <a href="#line">LINE</a>
+        <a href="#resources">資源</a>
+        <a href="#entry">切入</a>
+        <a href="#cases">案例</a>
+        <a href="#indicators">指標</a>
+        <a href="#loop">閉環</a>
+        <a href="#upgrade">升級</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero" id="lock">
+      <div>
+        <p class="kicker">決策前路徑地圖｜醫美 / 大健康 × 高信任會員制</p>
+        <h1><span class="line">用私董會看終局，</span><span class="line">用 LINE 社群看起點，</span><span class="line">用會員閉環看成交。</span></h1>
+        <p class="lead">這頁不是私董會介紹，也不是案例百科。它用成熟私董會作為路徑指標，判斷現有 LINE 高信任社群是否能升級成醫美 / 大健康會員制，並進一步長出成交與平行產品閉環。</p>
+        <div class="hero-meta">
+          <span class="chip">定位：決策前市場地圖</span>
+          <span class="chip">用途：看路徑，不定案</span>
+          <span class="chip">主軸：信任場域 → 會員制 → 成交閉環</span>
+        </div>
+      </div>
+      <aside class="signal-board" aria-label="本頁判斷">
+        <div class="board-head">
+          <strong>本頁要回答的不是「要不要辦活動」</strong>
+          <span>而是既有高信任社群，能不能升級成可成交、可復訪、可延伸的會員場域。</span>
+        </div>
+        <div class="route-mini">
+          <div><span class="num">1</span><span><b>私董會看終局。</b>成熟案例提醒高信任會員制未來可能長出的能力。</span></div>
+          <div><span class="num">2</span><span><b>LINE 社群看基礎。</b>現有信任、觸達與舞台雛形，不必從零開始。</span></div>
+          <div><span class="num">3</span><span><b>平行閉環看成交。</b>醫美、大健康、抗老、體態、照護與財務安全感可以服務同一批人。</span></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="board">
+      <div class="section-head">
+        <div>
+          <p class="kicker">1｜為什麼先看私董會</p>
+          <h2>不是複製私董會，而是理解高信任會員制如何成立。</h2>
+        </div>
+        <p>私董會不是這個案子的最終產品形式。它的價值在於提供一個成熟參考：高品質成員如何被聚集、信任如何被建立、關係如何從一次交流變成長期會員機制。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <small>看人群</small>
+          <h3>如何聚集高品質成員</h3>
+          <p>成熟私董會讓人看見：真正有價值的不是人多，而是進來的人有經驗、資源、問題意識與互相校準的可能。</p>
+        </article>
+        <article class="card">
+          <small>看信任</small>
+          <h3>如何建立篩選感與信任感</h3>
+          <p>會員門檻、推薦、品牌與制度，不一定讓人立刻信任，但能降低陌生感，讓參與者感覺這個場域不是隨機湊局。</p>
+        </article>
+        <article class="card">
+          <small>看終局</small>
+          <h3>如何從交流長成會員關係</h3>
+          <p>成熟私董會不是一次活動，而是定期互動、核心小組、會員身份與長期關係的組合。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="health">
+      <div class="section-head">
+        <div>
+          <p class="kicker">2｜為什麼醫美 / 大健康需要高信任會員場域</p>
+          <h2>成交不只是銷售問題，而是信任場域與長期關係設計問題。</h2>
+        </div>
+        <p>醫美與大健康不是低信任消費。客戶在意安全、效果、隱私、專業背書與長期維護，成交常常發生在持續教育、陪伴與信任累積之後。</p>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>產業特性</th>
+            <th>對成交的影響</th>
+            <th>會員場域可以承接什麼</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>高信任門檻</b></td>
+            <td>客戶需要相信醫師、品牌、顧問或主理人的判斷。</td>
+            <td>用持續互動與專家出場，降低第一次決策的不確定感。</td>
+          </tr>
+          <tr>
+            <td><b>高隱私敏感</b></td>
+            <td>外貌、年齡、性健康、身體狀態，不一定適合公開討論。</td>
+            <td>用小型、被篩選的場域，提高講真需求的安全感。</td>
+          </tr>
+          <tr>
+            <td><b>高教育成本</b></td>
+            <td>客戶需要理解療程、風險、週期、效果與維護方式。</td>
+            <td>把教育從單次說明，變成系列主題、醫師對談與會員內容。</td>
+          </tr>
+          <tr>
+            <td><b>高客單與高復訪潛力</b></td>
+            <td>一旦信任建立，需求可能延伸到療程、抗老、健康管理與轉介紹。</td>
+            <td>把一次成交延伸成會員、復訪、年度計畫與多需求服務。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="line">
+      <div class="section-head">
+        <div>
+          <p class="kicker">3｜現有 LINE 社群不是從零開始</p>
+          <h2>它已經有信任、觸達與舞台雛形，下一步是升級機制。</h2>
+        </div>
+        <p>這裡不需要把既有 LINE 社群推翻重做。更值得思考的是：舞台若只停在成員曝光，價值會留在「誰出現過」；若能把分享後的問題、需求與專家回應記錄下來，才會長出可追蹤、可媒合、可服務的會員價值。</p>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>既有基礎</th>
+            <th>可升級方向</th>
+            <th>對會員制的意義</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>LINE 社群</b></td>
+            <td>承接會員關係與持續觸達。</td>
+            <td>不用從零建立私域入口，已有可持續溝通的基礎。</td>
+          </tr>
+          <tr>
+            <td><b>信任基礎</b></td>
+            <td>讓成員願意參與更深度的主題。</td>
+            <td>信任不是重新創造，而是要被導向更具價值的互動。</td>
+          </tr>
+          <tr>
+            <td><b>舞台雛形</b></td>
+            <td>從展示分享升級成「問題被說出、專家可回應、後續有人承接」。</td>
+            <td>因為分享會暴露成員真正卡住的地方，若現場能把問題整理成需求，就能接到醫師、顧問或主題小組，而不是只完成一次露出。</td>
+          </tr>
+          <tr>
+            <td><b>專業人才</b></td>
+            <td>從人脈名單升級成主題場域資源。</td>
+            <td>每個專家都可以支撐一條會員需求線。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="resources">
+      <div class="section-head">
+        <div>
+          <p class="kicker">4｜團隊資源能支撐哪些會員價值</p>
+          <h2>這不是只有醫美療程，而是一組可組裝的大健康專業資源池。</h2>
+        </div>
+        <p>決策人團隊已有跨領域專業資源，代表未來的會員價值不必停在單一療程，可以延伸到美、健康、熟齡、照護、體態與財務安全感。</p>
+      </div>
+      <div class="resource-grid">
+        <article class="resource-card">
+          <small>醫療信任</small>
+          <h3>泌尿科醫師、醫美醫師</h3>
+          <p>支撐醫美、性健康與抗老醫學，特別適合承接高隱私、高信任需求。</p>
+        </article>
+        <article class="resource-card">
+          <small>身體功能</small>
+          <h3>運動矯正治療師</h3>
+          <p>支撐體態、姿勢、運動修復與疼痛改善，讓會員價值不只停在外貌。</p>
+        </article>
+        <article class="resource-card">
+          <small>復健照護</small>
+          <h3>榮總職能治療師</h3>
+          <p>支撐日常功能、術後恢復與熟齡健康，補上大健康的長期維護視角。</p>
+        </article>
+        <article class="resource-card">
+          <small>中西整合</small>
+          <h3>中醫碩士刀房護理師</h3>
+          <p>同時理解臨床照護與醫美現場，可支撐療程前後照護與體質調理。</p>
+        </article>
+        <article class="resource-card">
+          <small>熟齡家庭</small>
+          <h3>長照護理師</h3>
+          <p>支撐父母照護、熟齡生活與家庭健康管理，讓會員服務更接近長期需求。</p>
+        </article>
+        <article class="resource-card">
+          <small>高端信任</small>
+          <h3>財務醫師</h3>
+          <p>支撐高收入族群語言、財務安全感與健康支出規劃，連接資產與健康。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="entry">
+      <div class="section-head">
+        <div>
+          <p class="kicker">5｜市場切入判斷</p>
+          <h2>先問能影響誰，再決定會員場域怎麼長。</h2>
+        </div>
+        <p>案例整理往上看，其實是在回答一個更前面的問題：這個醫美 / 大健康會員制，初期要先影響已經有資源的人，還是正在往上移動的人？兩者都可能成立，但入口語言、內容設計與成交節奏會很不一樣。</p>
+      </div>
+      <div class="entry-map">
+        <article class="entry-question">
+          <h3>不是先決定要辦什麼，而是先決定誰會被吸引。</h3>
+          <p>如果不是一開始就靠高信任圈層，也可以先靠內容、流量、生活想像或個人 IP，把陌生人帶進私域，再透過小型互動、案例教育與專家回應慢慢長出信任。</p>
+        </article>
+        <div class="entry-routes">
+          <article class="entry-route">
+            <small>路徑 A｜已經有資源的人</small>
+            <h3>老闆 / 高階決策者</h3>
+            <p>入口語言偏向資源密度、醫師背書、身份感、效率與健康資產。更接近私董會、CXO、熟人推薦與高信任圈層路徑。</p>
+            <p class="route-note">適合高客單、隱私高、決策慢的醫美 / 大健康服務，但新血速度可能較慢。</p>
+          </article>
+          <article class="entry-route">
+            <small>路徑 B｜正在往上移動的人</small>
+            <h3>上班族 / 準高收入族</h3>
+            <p>入口語言偏向變美、變健康、變有自信、變自由、變成更好的自己。更接近內容流量、生活想像、個人 IP 與陪跑社群路徑。</p>
+            <p class="route-note">這條路徑不是單純做流量，而是把陌生注意力導進私域，再用內容、互動、分眾與回訪，慢慢堆成可經營的關係資產。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="section-head">
+        <div>
+          <p class="kicker">6｜用不同案例回答不同問題</p>
+          <h2>案例不是模板，而是問題索引。</h2>
+        </div>
+        <p>案例要放在市場切入判斷之後看：有些案例回答高信任圈層怎麼成熟，有些回答內容、流量與生活想像如何把陌生人帶進私域。這樣案例才不是名單，而是判斷路徑。</p>
+      </div>
+      <div class="case-intro-grid">
+        <article class="case-intro">
+          <h3>Vistage</h3>
+          <p class="case-meta">看成熟私董會｜1957 年由 Bob Nourse 發起</p>
+          <div class="case-links"><a href="https://www.vistage.com/" target="_blank" rel="noopener">官方網站</a></div>
+          <p>Vistage 是面向 CEO、企業主與高階主管的同儕顧問與教練組織，核心是小組討論、主席引導與領導者成長。它不是靠熱鬧活動成立，而是靠「被篩選的同儕 + 固定節奏 + 問題校準」建立長期價值。</p>
+          <p class="case-value">值得看：高信任會員制成熟後，如何用制度和引導者讓成員持續回來。</p>
+        </article>
+        <article class="case-intro">
+          <h3>EO / YPO</h3>
+          <p class="case-meta">看企業家圈層｜EO 創立於 1987；YPO 創立於 1950</p>
+          <div class="case-links"><a href="https://eonetwork.org/" target="_blank" rel="noopener">EO</a><a href="https://www.ypo.org/" target="_blank" rel="noopener">YPO</a></div>
+          <p>EO 與 YPO 都是企業家與高階經營者的全球同儕網絡，重點不只是認識人，而是讓相近層級的人在保密與互信中交換經驗。它們把會員身份、章節組織、同儕學習和圈層歸屬結合起來。</p>
+          <p class="case-value">值得看：人群品質與保密機制，如何讓高階成員願意講真問題。</p>
+        </article>
+        <article class="case-intro">
+          <h3>Hampton</h3>
+          <p class="case-meta">看新世代創辦人社群｜Sam Parr、Joe Speiser 共同創辦</p>
+          <div class="case-links"><a href="https://joinhampton.com/" target="_blank" rel="noopener">官方網站</a></div>
+          <p>Hampton 是面向高成長創辦人與 CEO 的私人會員網絡，主打被審核的同儕、每月 Core group 與快速取得答案的社群。它把創辦人 IP、清楚會員條件與小組制包成更現代的會員產品。</p>
+          <p class="case-value">值得看：成熟私董會邏輯如何被產品化，並吸引新一代高端會員。</p>
+        </article>
+        <article class="case-intro">
+          <h3>Chief</h3>
+          <p class="case-meta">看女性高階主管會員制｜Carolyn Childers、Lindsay Kaplan 共同創辦</p>
+          <div class="case-links"><a href="https://chief.com/" target="_blank" rel="noopener">官方網站</a></div>
+          <p>Chief 是女性高階主管網絡，將同儕小組、活動、教練與會員身份包成一個清楚定位的高端社群。它的案例重點不是性別本身，而是如何把一群明確身份的人變成可服務的會員市場。</p>
+          <p class="case-value">值得看：如何用明確族群定位，讓會員知道自己為什麼屬於這裡。</p>
+        </article>
+        <article class="case-intro">
+          <h3>CXO 私董餐桌會</h3>
+          <p class="case-meta">看餐桌型信任入口｜商戰 CXO 許景泰 Jerry</p>
+          <div class="case-links"><a href="https://cxo-world.com.tw/" target="_blank" rel="noopener">官方網站</a></div>
+          <p>CXO 私董餐桌會以主題餐桌、故事分享與企業主交流作為入口。它值得參考的不是餐會形式，而是把「吃飯」升級成有主題、有對的人、有真實故事的關係建立場。</p>
+          <p class="case-value">值得看：初期如何用低壓力場合，讓信任先發生，再承接後續合作可能。</p>
+        </article>
+        <article class="case-intro">
+          <h3>Legere 里格</h3>
+          <p class="case-meta">看生活風格會員場｜Isaac、Mina 共同經營</p>
+          <div class="case-links"><a href="https://legere.com.tw/" target="_blank" rel="noopener">官方網站</a></div>
+          <p>Legere 以會員俱樂部、Key Man / Key Woman 晚宴、跨產業交流與生活體驗打造高質感社交場。它的重點是把場地、儀式感、人物與社交需求包成可感知的會員體驗。</p>
+          <p class="case-value">值得看：醫美 / 大健康若要做高端會員，場域氣質和入場期待如何影響轉換。</p>
+        </article>
+        <article class="case-intro">
+          <h3>女人迷 Womany</h3>
+          <p class="case-meta">看內容 IP 到社群陪伴｜張瑋軒等人創辦</p>
+          <div class="case-links"><a href="https://womany.net/" target="_blank" rel="noopener">官方網站</a></div>
+          <p>女人迷從性別與自我成長內容出發，逐步形成活動、學習與社群陪伴。它值得參考的地方，是內容先建立價值觀與信任，再讓同一批人進入更深的學習與陪伴關係。</p>
+          <p class="case-value">值得看：會員制若要有溫度，不能只靠權益，也要有共同語言與價值感。</p>
+        </article>
+        <article class="case-intro">
+          <h3>大人學 / 商業思維學院</h3>
+          <p class="case-meta">看知識 IP 到長期產品線｜姚詩豪、張國洋；游舒帆 Gipi</p>
+          <div class="case-links"><a href="https://www.darencademy.com/" target="_blank" rel="noopener">大人學</a><a href="https://www.facebook.com/bizthinking/" target="_blank" rel="noopener">商業思維學院</a></div>
+          <p>大人學以職涯、人際與成熟思維建立長期內容信任；商業思維學院則以商業思考、職場判斷與課程產品化累積受眾。它們共同展示：信任一旦成立，可以從內容延伸到課程、社群、陪跑和多產品線。</p>
+          <p class="case-value">值得看：醫美 / 健康教育也可以從一次說明，長成長期學習與復訪節奏。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="indicators">
+      <div class="section-head">
+        <div>
+          <p class="kicker">7｜成熟私董會的小補充</p>
+          <h2>這些不是現在要全部做，而是未來能力清單。</h2>
+        </div>
+        <p>看完案例後，只需要保留幾個成熟私董會的底層指標。它們不是初期 SOP，而是之後檢查會員制有沒有長大的參照。</p>
+      </div>
+      <div class="indicator-strip">
+        <div class="indicator"><b>入口動能</b><p>有些靠人，有些靠內容、流量、定位或場域包裝先吸引進場；信任可能是在互動後才形成。</p></div>
+        <div class="indicator"><b>成員品質</b><p>會員不是越多越好，人群密度會決定場域價值。</p></div>
+        <div class="indicator"><b>固定節奏</b><p>定期主題與小組，讓關係不只停在一次活動。</p></div>
+        <div class="indicator"><b>制度信任</b><p>保密、主持、篩選與承接，會決定能不能成熟化。</p></div>
+      </div>
+    </section>
+
+    <section id="loop">
+      <div class="section-head">
+        <div>
+          <p class="kicker">8｜平行閉環如何接到成交</p>
+          <h2>讓這件事從活動，變成會員制生意。</h2>
+        </div>
+        <p>這裡的私域不是另一條支線，而是平行閉環的方法底層。私域經營教的是如何持續經營同一批人的關係；平行閉環看的是這批人被長期理解後，還能長出哪些相鄰需求與產品線。</p>
+      </div>
+      <div class="loop-map">
+        <article class="loop-focus">
+          <div>
+            <h3>平行閉環</h3>
+            <p>私域經營是方法底層，醫美 / 大健康會員制是落地場景，平行閉環是商業結果。</p>
+          </div>
+          <p>這不是多賣幾種商品，而是用同一批人的長期關係，承接不同階段的需求。</p>
+        </article>
+        <div class="needs-grid">
+          <div class="need"><b>變美</b><p>醫美療程、皮膚管理、抗老方案。</p></div>
+          <div class="need"><b>變健康</b><p>健康檢測、營養補充、睡眠與代謝管理。</p></div>
+          <div class="need"><b>變有自信</b><p>形象管理、穿搭、儀態、社交場合。</p></div>
+          <div class="need"><b>變年輕</b><p>抗老醫學、保養品、體態管理。</p></div>
+          <div class="need"><b>變有圈層</b><p>私密沙龍、會員餐會、生活方式活動。</p></div>
+          <div class="need"><b>變會照顧家人</b><p>長照諮詢、父母健康管理、熟齡生活規劃。</p></div>
+          <div class="need"><b>變安心</b><p>財務健檢、保險、退休與醫療支出規劃。</p></div>
+          <div class="need"><b>變可持續</b><p>年度會員、專屬顧問、推薦制與復訪節奏。</p></div>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top: 18px;">
+        <article class="card">
+          <small>方法底層</small>
+          <h3>私域經營</h3>
+          <p>教的是人從哪裡來、如何承接、如何分層、如何互動、如何回訪，最後把注意力沉澱成可經營的關係資產。</p>
+        </article>
+        <article class="card">
+          <small>落地場景</small>
+          <h3>醫美 / 大健康會員制</h3>
+          <p>這個場景天然需要高信任、高復訪與長期教育，可以示範私域如何從工具操作，落地成會員經營。</p>
+        </article>
+        <article class="card">
+          <small>商業結果</small>
+          <h3>平行閉環</h3>
+          <p>同一批人被持續理解與服務後，才有機會從變美、健康、抗老、體態、照護與財務安全感中，長出更多產品線。</p>
+        </article>
+      </div>
+      <article class="extension-link">
+        <div>
+          <h3>延伸地圖：私域經營如何把注意力變成關係資產</h3>
+          <p>如果沒有私域承接，內容流量只會停在看見；如果有私域系統，陌生注意力才有機會被養成會員關係。所以當路徑 B 從內容、流量與生活想像開始，下一步不是急著成交，而是先把看見、互動、分眾、回訪與會員關係，整理成可累積的受眾資產。</p>
+        </div>
+        <a href="https://pts15527-hub.github.io/-/#speakers" target="_blank" rel="noopener">查看私域經營地圖</a>
+      </article>
+    </section>
+
+    <section id="upgrade">
+      <div class="section-head">
+        <div>
+          <p class="kicker">9｜下一步不是重做，而是補上關鍵升級機制</p>
+          <h2>讓舞台從被看見，長出被理解、被連結、被服務的會員價值。</h2>
+        </div>
+        <p>既有 LINE 社群已經有信任與觸達基礎，下一步不一定是重新設計完整制度，也不是單純增加更多活動，而是補上讓舞台升級的核心機制。</p>
+      </div>
+      <div class="upgrade">
+        <article class="panel">
+          <h3>關鍵升級機制</h3>
+          <p style="margin-top: 12px; color: #536761;">從小型主題場開始，讓每一次舞台不只停在分享，而是進一步承接成員的真實問題、專家視角與後續需求。</p>
+        </article>
+        <article class="panel">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>從</th>
+                <th>升級成</th>
+                <th>留下什麼</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>展示分享</b></td>
+                <td>真實問題被看見</td>
+                <td>可延伸的需求線索</td>
+              </tr>
+              <tr>
+                <td><b>專家名單</b></td>
+                <td>專家視角進入問題</td>
+                <td>可信任的解法與下一步</td>
+              </tr>
+              <tr>
+                <td><b>社群觸達</b></td>
+                <td>會員關係承接</td>
+                <td>復訪、推薦與長期服務可能</td>
+              </tr>
+              <tr>
+                <td><b>單次主題</b></td>
+                <td>系列主題與產品線</td>
+                <td>平行閉環的商業起點</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+      <article class="closing-note">
+        <h3>這不是限制可能性，而是先整理出能一起長大的主幹。</h3>
+        <p>決策人擅長參考案例、抓住模式，並把機會做出成績；這份地圖要補上的，是讓案例參考、團隊資源與商業模式探索，先長在同一棵樹上。先有主幹，後續的主題場、會員服務、專家角色與產品閉環，才比較容易長成彼此支撐的枝幹，而不是各自發散。</p>
+        <p>換句話說，這一頁不是要提前把答案定死，而是讓一群人可以先看懂方向、分工與下一步要補的機制，再一起往前試。</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
