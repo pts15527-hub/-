@@ -6,22 +6,25 @@
   <title>醫美大健康會員制｜決策前路徑地圖</title>
   <style>
     :root {
-      --ink: #17211e;
-      --muted: #64736e;
-      --paper: #f7f4ed;
+      --ink: #16201f;
+      --muted: #60716d;
+      --paper: #f6f1e8;
       --white: #ffffff;
-      --line: #dbe0d8;
-      --forest: #1f5145;
-      --teal: #197c78;
-      --blue: #426b9b;
-      --gold: #b48a31;
-      --clay: #b56749;
-      --plum: #73516f;
-      --mint: #e6f0e8;
-      --sky: #e8eff6;
-      --sand: #f2e8dd;
-      --rose: #f0e6e6;
-      --shadow: 0 22px 60px rgba(29, 43, 37, .12);
+      --line: #d8ddd3;
+      --forest: #174a3d;
+      --evergreen: #0f312e;
+      --teal: #12827c;
+      --blue: #315f9b;
+      --gold: #c49a32;
+      --clay: #c2623f;
+      --plum: #704b72;
+      --ink-soft: #263935;
+      --mint: #dcefe4;
+      --sky: #dfeaf5;
+      --sand: #f1e2cf;
+      --rose: #eadcdc;
+      --shadow: 0 26px 70px rgba(22, 32, 31, .16);
+      --sharp-shadow: 0 16px 0 rgba(22, 32, 31, .08);
     }
 
     * { box-sizing: border-box; }
@@ -32,7 +35,9 @@
       margin: 0;
       color: var(--ink);
       background:
-        linear-gradient(180deg, rgba(230, 240, 232, .92) 0, rgba(247, 244, 237, .9) 430px, var(--paper) 900px),
+        radial-gradient(circle at 18% 4%, rgba(196, 154, 50, .22), transparent 280px),
+        radial-gradient(circle at 94% 12%, rgba(18, 130, 124, .16), transparent 340px),
+        linear-gradient(180deg, rgba(246, 241, 232, .94) 0, rgba(236, 240, 232, .86) 430px, var(--paper) 980px),
         var(--paper);
       font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
       line-height: 1.66;
@@ -57,8 +62,8 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      border-bottom: 1px solid rgba(31, 81, 69, .14);
-      background: rgba(247, 244, 237, .93);
+      border-bottom: 1px solid rgba(15, 49, 46, .16);
+      background: rgba(246, 241, 232, .94);
       backdrop-filter: blur(16px);
     }
 
@@ -76,7 +81,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: var(--forest);
+      color: var(--evergreen);
       font-weight: 900;
       white-space: nowrap;
     }
@@ -105,14 +110,15 @@
       padding: 0 10px;
       border: 1px solid transparent;
       border-radius: 8px;
-      color: #38544d;
+      color: #254943;
       font-size: 13px;
       font-weight: 800;
     }
 
     .links a:hover {
-      border-color: var(--line);
-      background: rgba(255, 255, 255, .78);
+      border-color: rgba(196, 154, 50, .36);
+      background: rgba(255, 255, 255, .88);
+      color: var(--evergreen);
     }
 
     main {
@@ -123,6 +129,7 @@
     section {
       padding: 76px 0;
       scroll-margin-top: 84px;
+      position: relative;
     }
 
     h1, h2, h3 {
@@ -133,7 +140,7 @@
 
     h1 {
       max-width: 900px;
-      color: var(--forest);
+      color: var(--evergreen);
       font-size: clamp(38px, 6.3vw, 74px);
     }
 
@@ -162,7 +169,7 @@
       grid-template-columns: minmax(0, 1.05fr) minmax(360px, .86fr);
       gap: 46px;
       align-items: center;
-      padding: 58px 0 46px;
+      padding: 72px 0 54px;
     }
 
     .lead {
@@ -185,10 +192,10 @@
       min-height: 34px;
       align-items: center;
       padding: 0 11px;
-      border: 1px solid rgba(31, 81, 69, .18);
+      border: 1px solid rgba(15, 49, 46, .18);
       border-radius: 8px;
-      background: rgba(255, 255, 255, .7);
-      color: #38544d;
+      background: rgba(255, 255, 255, .82);
+      color: #284d46;
       font-size: 13px;
       font-weight: 800;
     }
@@ -199,33 +206,37 @@
     .question-card,
     .resource-card,
     .path-card {
-      border: 1px solid rgba(31, 81, 69, .14);
+      border: 1px solid rgba(15, 49, 46, .14);
       border-radius: 8px;
-      background: rgba(255, 255, 255, .82);
+      background: rgba(255, 255, 255, .88);
       box-shadow: 0 14px 36px rgba(31, 53, 45, .07);
     }
 
     .signal-board {
-      box-shadow: var(--shadow);
+      border: 0;
+      background: #101f20;
+      box-shadow: var(--shadow), var(--sharp-shadow);
       overflow: hidden;
     }
 
     .board-head {
-      padding: 21px 22px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(90deg, rgba(230, 240, 232, .96), rgba(232, 239, 246, .78));
+      padding: 24px 24px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      background:
+        linear-gradient(135deg, rgba(18, 130, 124, .52), rgba(196, 154, 50, .34)),
+        #102c2b;
     }
 
     .board-head strong {
       display: block;
-      color: var(--forest);
+      color: white;
       font-size: 18px;
     }
 
     .board-head span {
       display: block;
       margin-top: 4px;
-      color: var(--muted);
+      color: rgba(255, 255, 255, .72);
       font-size: 14px;
     }
 
@@ -238,9 +249,9 @@
       display: grid;
       grid-template-columns: 34px 1fr;
       gap: 12px;
-      padding: 16px 22px;
-      border-bottom: 1px solid var(--line);
-      color: #415852;
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      color: rgba(255, 255, 255, .76);
       min-width: 0;
     }
 
@@ -259,13 +270,13 @@
       display: inline-grid;
       place-items: center;
       border-radius: 8px;
-      background: var(--forest);
-      color: white;
+      background: var(--gold);
+      color: #10231f;
       font-size: 13px;
       font-weight: 900;
     }
 
-    .route-mini b { color: var(--ink); }
+    .route-mini b { color: white; }
 
     .section-head {
       display: grid;
@@ -273,6 +284,8 @@
       gap: 34px;
       align-items: end;
       margin-bottom: 30px;
+      padding-top: 10px;
+      border-top: 2px solid rgba(15, 49, 46, .12);
     }
 
     .section-head p {
@@ -299,6 +312,28 @@
       padding: 22px;
     }
 
+    .card,
+    .resource-card,
+    .case-intro,
+    .entry-route,
+    .indicator,
+    .need,
+    .panel {
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .card:hover,
+    .resource-card:hover,
+    .case-intro:hover,
+    .entry-route:hover,
+    .indicator:hover,
+    .need:hover,
+    .panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(22, 32, 31, .11);
+      border-color: rgba(196, 154, 50, .34);
+    }
+
     .card small,
     .resource-card small,
     .path-card small {
@@ -320,10 +355,10 @@
       width: 100%;
       border-collapse: collapse;
       overflow: hidden;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(15, 49, 46, .14);
       border-radius: 8px;
       background: var(--white);
-      box-shadow: 0 14px 36px rgba(31, 53, 45, .07);
+      box-shadow: 0 16px 42px rgba(31, 53, 45, .08);
     }
 
     .comparison-table th,
@@ -335,8 +370,8 @@
     }
 
     .comparison-table th {
-      color: var(--forest);
-      background: rgba(230, 240, 232, .86);
+      color: white;
+      background: var(--evergreen);
       font-size: 14px;
     }
 
@@ -356,11 +391,11 @@
     }
 
     .resource-card:nth-child(1),
-    .resource-card:nth-child(4) { border-top: 5px solid var(--teal); }
+    .resource-card:nth-child(4) { border-top: 6px solid var(--teal); }
     .resource-card:nth-child(2),
-    .resource-card:nth-child(5) { border-top: 5px solid var(--gold); }
+    .resource-card:nth-child(5) { border-top: 6px solid var(--gold); }
     .resource-card:nth-child(3),
-    .resource-card:nth-child(6) { border-top: 5px solid var(--plum); }
+    .resource-card:nth-child(6) { border-top: 6px solid var(--plum); }
 
     .ability-grid {
       display: grid;
@@ -455,17 +490,52 @@
       align-items: stretch;
     }
 
+    #entry,
+    #loop {
+      padding: 96px 0;
+      isolation: isolate;
+      background:
+        linear-gradient(135deg, rgba(15, 49, 46, .96), rgba(23, 74, 61, .9) 54%, rgba(196, 154, 50, .3)),
+        #10231f;
+      box-shadow: 0 0 0 100vmax #10231f;
+      clip-path: inset(0 -100vmax);
+    }
+
+    #entry::before,
+    #loop::before {
+      content: none;
+    }
+
+    #entry .section-head,
+    #loop .section-head {
+      border-top-color: rgba(255, 255, 255, .16);
+    }
+
+    #entry .section-head h2,
+    #loop .section-head h2,
+    #entry .section-head .kicker,
+    #loop .section-head .kicker {
+      color: white;
+    }
+
+    #entry .section-head p,
+    #loop .section-head p {
+      color: rgba(255, 255, 255, .74);
+    }
+
     .entry-question {
       padding: 28px;
       border-radius: 8px;
-      background: #20362f;
+      background:
+        linear-gradient(180deg, rgba(196, 154, 50, .22), transparent 58%),
+        #0f2220;
       color: white;
-      box-shadow: var(--shadow);
+      box-shadow: 0 24px 62px rgba(0, 0, 0, .22);
     }
 
     .entry-question h3 {
       color: white;
-      font-size: 31px;
+      font-size: clamp(30px, 3.2vw, 44px);
       line-height: 1.18;
     }
 
@@ -483,11 +553,14 @@
 
     .entry-route {
       padding: 22px;
-      border: 1px solid rgba(31, 81, 69, .14);
+      border: 1px solid rgba(255, 255, 255, .18);
       border-radius: 8px;
-      background: rgba(255, 255, 255, .86);
-      box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .18);
     }
+
+    .entry-route:nth-child(1) { border-top: 7px solid var(--gold); }
+    .entry-route:nth-child(2) { border-top: 7px solid var(--teal); }
 
     .entry-route small {
       color: var(--clay);
@@ -496,7 +569,7 @@
 
     .entry-route h3 {
       margin-top: 8px;
-      color: var(--forest);
+      color: var(--evergreen);
       font-size: 23px;
     }
 
@@ -543,12 +616,12 @@
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 18px;
       align-items: center;
-      border: 1px solid rgba(31, 81, 69, .16);
+      border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 8px;
       background:
-        linear-gradient(135deg, rgba(232, 239, 246, .92), rgba(255, 255, 255, .9)),
+        linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(223, 234, 245, .94)),
         white;
-      box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .18);
     }
 
     .extension-link h3 {
@@ -569,14 +642,14 @@
       justify-content: center;
       padding: 0 18px;
       border-radius: 8px;
-      background: var(--forest);
+      background: var(--clay);
       color: white;
       font-weight: 900;
       white-space: nowrap;
     }
 
     .extension-link a:hover {
-      background: #163d34;
+      background: #a94f32;
     }
 
     .case-intro {
@@ -591,9 +664,26 @@
       box-shadow: 0 14px 34px rgba(31, 53, 45, .06);
     }
 
+    .case-intro:nth-child(4n + 1) { border-left: 6px solid var(--blue); }
+    .case-intro:nth-child(4n + 2) { border-left: 6px solid var(--gold); }
+    .case-intro:nth-child(4n + 3) { border-left: 6px solid var(--teal); }
+    .case-intro:nth-child(4n) { border-left: 6px solid var(--plum); }
+
     .case-intro h3 {
       color: var(--forest);
       font-size: 22px;
+    }
+
+    .case-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .case-heading h3 {
+      min-width: 0;
+      flex: 1 1 auto;
     }
 
     .case-meta {
@@ -606,24 +696,37 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      flex: 0 0 auto;
+      justify-content: flex-end;
+      margin-top: 2px;
     }
 
     .case-links a {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      gap: 6px;
       min-height: 30px;
-      padding: 0 10px;
-      border: 1px solid rgba(31, 81, 69, .18);
+      padding: 0 12px;
+      border: 1px solid rgba(15, 49, 46, .88);
       border-radius: 8px;
-      background: rgba(255, 255, 255, .78);
-      color: var(--forest);
+      background: var(--evergreen);
+      color: white;
       font-size: 12px;
       font-weight: 900;
+      box-shadow: 0 8px 18px rgba(15, 49, 46, .16);
+    }
+
+    .case-links a::after {
+      content: "↗";
+      font-size: 12px;
+      line-height: 1;
     }
 
     .case-links a:hover {
-      border-color: rgba(31, 81, 69, .34);
-      background: white;
+      border-color: var(--clay);
+      background: var(--clay);
+      color: white;
     }
 
     .case-intro p {
@@ -672,12 +775,14 @@
     .loop-focus {
       padding: 26px;
       border-radius: 8px;
-      background: #20362f;
+      background:
+        linear-gradient(145deg, rgba(18, 130, 124, .34), transparent 58%),
+        #0f2220;
       color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow);
+      box-shadow: 0 24px 62px rgba(0, 0, 0, .22);
     }
 
     .loop-focus h3 {
@@ -698,9 +803,9 @@
 
     .need {
       padding: 16px;
-      border: 1px solid rgba(31, 81, 69, .12);
+      border: 1px solid rgba(255, 255, 255, .18);
       border-radius: 8px;
-      background: var(--white);
+      background: rgba(255, 255, 255, .94);
     }
 
     .need b { color: var(--forest); }
@@ -790,6 +895,15 @@
 
       .extension-link a {
         width: 100%;
+      }
+
+      .case-heading {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .case-links {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -1031,58 +1145,74 @@
       </div>
       <div class="case-intro-grid">
         <article class="case-intro">
-          <h3>Vistage</h3>
+          <div class="case-heading">
+            <h3>Vistage</h3>
+            <div class="case-links"><a href="https://www.vistage.com/" target="_blank" rel="noopener">官方網站</a></div>
+          </div>
           <p class="case-meta">看成熟私董會｜1957 年由 Bob Nourse 發起</p>
-          <div class="case-links"><a href="https://www.vistage.com/" target="_blank" rel="noopener">官方網站</a></div>
           <p>Vistage 是面向 CEO、企業主與高階主管的同儕顧問與教練組織，核心是小組討論、主席引導與領導者成長。它不是靠熱鬧活動成立，而是靠「被篩選的同儕 + 固定節奏 + 問題校準」建立長期價值。</p>
           <p class="case-value">值得看：高信任會員制成熟後，如何用制度和引導者讓成員持續回來。</p>
         </article>
         <article class="case-intro">
-          <h3>EO / YPO</h3>
+          <div class="case-heading">
+            <h3>EO / YPO</h3>
+            <div class="case-links"><a href="https://eonetwork.org/" target="_blank" rel="noopener">EO</a><a href="https://www.ypo.org/" target="_blank" rel="noopener">YPO</a></div>
+          </div>
           <p class="case-meta">看企業家圈層｜EO 創立於 1987；YPO 創立於 1950</p>
-          <div class="case-links"><a href="https://eonetwork.org/" target="_blank" rel="noopener">EO</a><a href="https://www.ypo.org/" target="_blank" rel="noopener">YPO</a></div>
           <p>EO 與 YPO 都是企業家與高階經營者的全球同儕網絡，重點不只是認識人，而是讓相近層級的人在保密與互信中交換經驗。它們把會員身份、章節組織、同儕學習和圈層歸屬結合起來。</p>
           <p class="case-value">值得看：人群品質與保密機制，如何讓高階成員願意講真問題。</p>
         </article>
         <article class="case-intro">
-          <h3>Hampton</h3>
+          <div class="case-heading">
+            <h3>Hampton</h3>
+            <div class="case-links"><a href="https://joinhampton.com/" target="_blank" rel="noopener">官方網站</a></div>
+          </div>
           <p class="case-meta">看新世代創辦人社群｜Sam Parr、Joe Speiser 共同創辦</p>
-          <div class="case-links"><a href="https://joinhampton.com/" target="_blank" rel="noopener">官方網站</a></div>
           <p>Hampton 是面向高成長創辦人與 CEO 的私人會員網絡，主打被審核的同儕、每月 Core group 與快速取得答案的社群。它把創辦人 IP、清楚會員條件與小組制包成更現代的會員產品。</p>
           <p class="case-value">值得看：成熟私董會邏輯如何被產品化，並吸引新一代高端會員。</p>
         </article>
         <article class="case-intro">
-          <h3>Chief</h3>
+          <div class="case-heading">
+            <h3>Chief</h3>
+            <div class="case-links"><a href="https://chief.com/" target="_blank" rel="noopener">官方網站</a></div>
+          </div>
           <p class="case-meta">看女性高階主管會員制｜Carolyn Childers、Lindsay Kaplan 共同創辦</p>
-          <div class="case-links"><a href="https://chief.com/" target="_blank" rel="noopener">官方網站</a></div>
           <p>Chief 是女性高階主管網絡，將同儕小組、活動、教練與會員身份包成一個清楚定位的高端社群。它的案例重點不是性別本身，而是如何把一群明確身份的人變成可服務的會員市場。</p>
           <p class="case-value">值得看：如何用明確族群定位，讓會員知道自己為什麼屬於這裡。</p>
         </article>
         <article class="case-intro">
-          <h3>CXO 私董餐桌會</h3>
+          <div class="case-heading">
+            <h3>CXO 私董餐桌會</h3>
+            <div class="case-links"><a href="https://cxo-world.com.tw/" target="_blank" rel="noopener">官方網站</a></div>
+          </div>
           <p class="case-meta">看餐桌型信任入口｜商戰 CXO 許景泰 Jerry</p>
-          <div class="case-links"><a href="https://cxo-world.com.tw/" target="_blank" rel="noopener">官方網站</a></div>
           <p>CXO 私董餐桌會以主題餐桌、故事分享與企業主交流作為入口。它值得參考的不是餐會形式，而是把「吃飯」升級成有主題、有對的人、有真實故事的關係建立場。</p>
           <p class="case-value">值得看：初期如何用低壓力場合，讓信任先發生，再承接後續合作可能。</p>
         </article>
         <article class="case-intro">
-          <h3>Legere 里格</h3>
+          <div class="case-heading">
+            <h3>Legere 里格</h3>
+            <div class="case-links"><a href="https://legere.com.tw/" target="_blank" rel="noopener">官方網站</a></div>
+          </div>
           <p class="case-meta">看生活風格會員場｜Isaac、Mina 共同經營</p>
-          <div class="case-links"><a href="https://legere.com.tw/" target="_blank" rel="noopener">官方網站</a></div>
           <p>Legere 以會員俱樂部、Key Man / Key Woman 晚宴、跨產業交流與生活體驗打造高質感社交場。它的重點是把場地、儀式感、人物與社交需求包成可感知的會員體驗。</p>
           <p class="case-value">值得看：醫美 / 大健康若要做高端會員，場域氣質和入場期待如何影響轉換。</p>
         </article>
         <article class="case-intro">
-          <h3>女人迷 Womany</h3>
+          <div class="case-heading">
+            <h3>女人迷 Womany</h3>
+            <div class="case-links"><a href="https://womany.net/" target="_blank" rel="noopener">官方網站</a></div>
+          </div>
           <p class="case-meta">看內容 IP 到社群陪伴｜張瑋軒等人創辦</p>
-          <div class="case-links"><a href="https://womany.net/" target="_blank" rel="noopener">官方網站</a></div>
           <p>女人迷從性別與自我成長內容出發，逐步形成活動、學習與社群陪伴。它值得參考的地方，是內容先建立價值觀與信任，再讓同一批人進入更深的學習與陪伴關係。</p>
           <p class="case-value">值得看：會員制若要有溫度，不能只靠權益，也要有共同語言與價值感。</p>
         </article>
         <article class="case-intro">
-          <h3>大人學 / 商業思維學院</h3>
+          <div class="case-heading">
+            <h3>大人學 / 商業思維學院</h3>
+            <div class="case-links"><a href="https://www.darencademy.com/" target="_blank" rel="noopener">大人學</a><a href="https://www.facebook.com/bizthinking/" target="_blank" rel="noopener">商業思維學院</a></div>
+          </div>
           <p class="case-meta">看知識 IP 到長期產品線｜姚詩豪、張國洋；游舒帆 Gipi</p>
-          <div class="case-links"><a href="https://www.darencademy.com/" target="_blank" rel="noopener">大人學</a><a href="https://www.facebook.com/bizthinking/" target="_blank" rel="noopener">商業思維學院</a></div>
           <p>大人學以職涯、人際與成熟思維建立長期內容信任；商業思維學院則以商業思考、職場判斷與課程產品化累積受眾。它們共同展示：信任一旦成立，可以從內容延伸到課程、社群、陪跑和多產品線。</p>
           <p class="case-value">值得看：醫美 / 健康教育也可以從一次說明，長成長期學習與復訪節奏。</p>
         </article>
@@ -1154,7 +1284,7 @@
           <h3>延伸地圖：私域經營如何把注意力變成關係資產</h3>
           <p>如果沒有私域承接，內容流量只會停在看見；如果有私域系統，陌生注意力才有機會被養成會員關係。所以當路徑 B 從內容、流量與生活想像開始，下一步不是急著成交，而是先把看見、互動、分眾、回訪與會員關係，整理成可累積的受眾資產。</p>
         </div>
-        <a href="https://pts15527-hub.github.io/-/" target="_blank" rel="noopener">查看私域經營地圖</a>
+        <a href="https://pts15527-hub.github.io/-/?source=high-trust-field-map" target="_blank" rel="noopener">查看私域經營地圖</a>
       </article>
     </section>
 
@@ -1206,9 +1336,9 @@
         </article>
       </div>
       <article class="closing-note">
-        <h3>這不是限制可能性，而是先整理出能一起長大的主幹。</h3>
-        <p>決策人擅長參考案例、抓住模式，並把機會做出成績；這份地圖要補上的，是讓案例參考、團隊資源與商業模式探索，先長在同一棵樹上。先有主幹，後續的主題場、會員服務、專家角色與產品閉環，才比較容易長成彼此支撐的枝幹，而不是各自發散。</p>
-        <p>換句話說，這一頁不是要提前把答案定死，而是讓一群人可以先看懂方向、分工與下一步要補的機制，再一起往前試。</p>
+        <h3>這不是限制可能性，而是讓後續探索有共同主幹。</h3>
+        <p>這個階段不需要急著把產品形式定死，也不需要一次完成完整會員制度。更重要的是先整理出幾條共同主幹：要影響誰、現有資源能服務什麼、哪些案例值得參考、私域如何承接關係，以及平行閉環如何長出成交。</p>
+        <p>有了這張地圖，後續不論是主題場、會員服務、專家角色、私域經營或產品線延伸，都可以放回同一個判斷框架裡，而不是各自發散。</p>
       </article>
     </section>
   </main>
